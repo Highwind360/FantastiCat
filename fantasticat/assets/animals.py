@@ -17,6 +17,21 @@ class Animal():
         self.name = name
         self.alive = True
 
+    def is_dead(self):
+        """Returns whether the animal has died."""
+        return self.health == 0
+
+    def move(self, context):
+        """The AI will make a decision on behalf of the animal."""
+        # TODO: add some AI
+        pass
+
+    def take_action(self, context):
+        """Requires a player to make a decision on what move to make next.
+        Performs the requested action."""
+        # TODO: do this
+        pass
+
     def hurt(self, amount):
         """Removes a specified amount of health from animal."""
         self.health -= amount
@@ -40,3 +55,6 @@ class Dog(Animal):
 
     def bite(self):
         print("The dog bites!")
+
+class AnimalNotFoundException():
+    """Error that occurs when a nonexistent animal is searched for."""

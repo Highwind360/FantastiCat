@@ -1,0 +1,9 @@
+[
+    {
+        "name":"Dog Attack",
+        "intro":"You wander into the alley. It smells like bone...\nSuddenly, a creature leaps out of the shadows, teeth bared. It's a dog!",
+        "enemies":[
+            { "type": "Dog" }
+        ]
+    }
+]
