@@ -40,20 +40,25 @@ def attempt_level(level_no):
             print("You were struck down.")
             return False
         else:
-            player.take_action()
+            player.take_action({"enemies": enemies})
         for enemy in enemies:
             if enemy.is_dead():
                 enemies.remove(enemy)
             else:
-                enemy.move(player)
+                enemy.move({"player": player, "mob_type": "enemy"})
         if len(enemies) == 0:
             return True
 
-def welcome_prompt():
+def welcome_prompt(name):
     """Prompts the user with the game opening banner.
     If the player chooses to begin, the method returns True. Any other input
-    will return False."""
+    will return False.
+
+    Parameters:
+        name -- the variable for storing the player's name in"""
     print("Welcome, Traveler.")
+    name = input("What do they call you? ")
+    print("Ah. {name}, is it? Pity you've wandered here.".format(name=name))
     print("As you will discover very soon, you are a cat.")
     print("There are many trials before you.")
     answer = input("Feeling curious? [Y/N]: ").upper()
@@ -78,10 +83,12 @@ def dramatic_print(mesg, timing=50, delay=150):
     print(mesg)
 
 def play(starting_level = 1, starting_lives = 9):
+    # TODO: Add a player class
+    name = None
     lives = starting_lives
     level_no = starting_level - 1
 
-    playing = welcome_prompt()
+    playing = welcome_prompt(name)
     while playing:
         choice = input(
             "You have {num} lives. Are you curious? [Y/n]: ".format(num=lives)
