@@ -16,6 +16,8 @@ class Animal():
         self.health = max_health
         self.name = name
         self.alive = True
+        self.base_damage = 2
+        self.base_defense = 0
 
     def is_dead(self):
         """Returns whether the animal has died."""
@@ -39,8 +41,16 @@ class Animal():
             self.alive = False
             self.health = 0
 
+    def attack(self, target):
+        "Finds a target to strike, then returns the amount of damage done.
+        The returned damage can be zero if the target has too much defense,
+        or a negative number in the case of a miss."""
+        # TODO: factor in player attack, level, precision, target agility, and stuff like that.
+        return self.base_damage - target.base_defense
+
     def heal(self, amount):
         """Restores the specified amount of health to the animal."""
+        print(self.name + " heals " + amount + " HP!")
         self.health += amount
         if self.health > self.max_health:
             self.health = self.max_health
@@ -55,6 +65,9 @@ class Dog(Animal):
 
     def bite(self):
         print("The dog bites!")
+
+class Cat(Animal):
+    default_name = "Cat"
 
 class AnimalNotFoundException():
     """Error that occurs when a nonexistent animal is searched for."""
