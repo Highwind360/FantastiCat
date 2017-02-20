@@ -36,7 +36,7 @@ class Animal():
             self.health = 0
 
     def attack(self, target):
-        "Finds a target to strike, then returns the amount of damage done.
+        """Finds a target to strike, then returns the amount of damage done.
         The returned damage can be zero if the target has too much defense,
         or a negative number in the case of a miss."""
         # TODO: factor in player attack, level, precision, target agility, and stuff like that.
