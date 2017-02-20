@@ -28,12 +28,6 @@ class Animal():
         # TODO: add some AI
         pass
 
-    def take_action(self, context):
-        """Requires a player to make a decision on what move to make next.
-        Performs the requested action."""
-        # TODO: do this
-        pass
-
     def hurt(self, amount):
         """Removes a specified amount of health from animal."""
         self.health -= amount
@@ -66,8 +60,30 @@ class Dog(Animal):
     def bite(self):
         print("The dog bites!")
 
+
 class Cat(Animal):
     default_name = "Cat"
+
+    def scratch(self, target):
+        """Basic cat attack. Stings."""
+        # TODO: add critical strikes
+        #print("You claw violently! Your target recoils.")
+        print(self.name + " claws at " + target.name)
+        return super().attack(target)
+
+    def heal(self, amount):
+        """Restores the specified amount of health to the animal."""
+        print(self.name + " cleans its fur.")
+        # TODO: critical heal
+        #print(self.name + " cleans itself thoroughly, coughs up a hairball")
+        super().heal(amount)
+
+    def take_action(self, context):
+        """Requires a player to make a decision on what move to make next.
+        Performs the requested action."""
+        # TODO: do this
+        pass
+
 
 class AnimalNotFoundException():
     """Error that occurs when a nonexistent animal is searched for."""
